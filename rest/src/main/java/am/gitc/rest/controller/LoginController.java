@@ -1,6 +1,5 @@
 package am.gitc.rest.controller;
 
-import am.gitc.common.util.ResponseStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +23,7 @@ public class LoginController {
 
         Map<String, String> map = new HashMap<>();
 //        if (isEmpty(username) && isEmpty(password)) {
-        map.put(ResponseStatus.BAD_REQUEST.getStatus(), ResponseStatus.BAD_REQUEST.getCode().toString());
+//        map.put(ResponseStatus.BAD_REQUEST.getStatus(), ResponseStatus.BAD_REQUEST.getCode().toString());
         return map;
 //        }
     }
@@ -38,7 +37,7 @@ public class LoginController {
     ) {
 
         Map<String, String> map = new HashMap<>();
-        map.put(ResponseStatus.SUSSES.getStatus(), ResponseStatus.SUSSES.getCode().toString());
+//        map.put(ResponseStatus.SUSSES.getStatus(), ResponseStatus.SUSSES.getCode().toString());
 
         map.put("user", "user data");
         return map;

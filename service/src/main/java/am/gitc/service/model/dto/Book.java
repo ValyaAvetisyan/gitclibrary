@@ -1,49 +1,44 @@
-//package am.gitc.service.model.dto;
-//
-//import am.gitc.service.model.lcp.Category;
-//
-//import javax.persistence.*;
-//import java.util.Date;
-//
-///**
-// * Created by Zorik Zaqaryan on 08.03.2016.
-// */
-//@Entity
-//public class Book {
-//
-//    @Column(name = "name")
-//    String name;
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "id")
-//    private Long id;
-//
-//    @Column(name = "category")
-//    @Enumerated(EnumType.STRING)
-//    private Category category;
-//
-//    @Column(name = "imageUri")
-//    private String imageUri;
-//
-//    @Column(name = "author")
-//    private String author;
-//
-//    @Column(name = "date")
-//    private Date date;
-////
-////    @ManyToOne
-////    @Column(name = "user_id")
-////    private User userId;
-//
-//    @Column(name = "count")
-//    private int count;
-//
-//    @Column(name = "reservedCount")
-//    private int reservedCount;
-//
-//    @Column(name = "userId")
-//    @ManyToOne
-//    private User user;
-//
-//}
+package am.gitc.service.model.dto;
+
+import am.gitc.service.model.lcp.Category;
+
+import javax.persistence.*;
+import java.util.Date;
+
+/**
+ * Created by Zorik Zaqaryan on 08.03.2016.
+ */
+@Entity
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
+    String name;
+
+    @Column(name = "category")
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    @Column(name = "imageUri")
+    private String imageUri;
+
+    @Column(name = "author")
+    private String author;
+
+    @Column(name = "addedDate")
+    private Date addedDate;
+
+    @Column(name = "count")
+    private int count;
+
+    @Column(name = "reservedCount")
+    private int reservedCount;
+
+    @Column(name = "status")
+    @Convert
+    private int status;
+}

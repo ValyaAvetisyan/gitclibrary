@@ -38,10 +38,8 @@ public class User {
     @Column(name = "userStatus")
     private UserStatus userStatus;
 
-
-//    @OneToMany
-//    @Column(name = "bookId")
-//    List<Book> userBooks;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    Set<Book> books;
 //
 
 }
