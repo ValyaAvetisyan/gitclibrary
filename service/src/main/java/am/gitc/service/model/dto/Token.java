@@ -1,7 +1,5 @@
 package am.gitc.service.model.dto;
 
-import am.gitc.service.model.convertor.TokenTypeConverter;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -25,9 +23,9 @@ public class Token implements Serializable {
     @JoinColumn(name = "userId")
     private User user;
 
-    @Column(name = "type")
-    @Convert(converter = TokenTypeConverter.class)
-    private TokenType type;
+//    @Column(name = "type")
+//    @Convert(converter = TokenTypeConverter.class)
+//    private TokenType type;
 
     @Column(name = "value")
     private String value;
@@ -48,13 +46,13 @@ public class Token implements Serializable {
         this.user = user;
     }
 
-    public TokenType getType() {
-        return type;
-    }
+//    public TokenType getType() {
+//        return type;
+//    }
 
-    public void setType(TokenType type) {
-        this.type = type;
-    }
+//    public void setType(TokenType type) {
+//        this.type = type;
+//    }
 
     public String getValue() {
         return value;

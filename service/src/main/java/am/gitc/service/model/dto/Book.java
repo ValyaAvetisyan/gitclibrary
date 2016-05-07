@@ -38,7 +38,7 @@ public class Book {
     @Column(name = "reservedCount")
     private int reservedCount;
 
-    @Column(name = "status")
-    @Convert
-    private int status;
+//    @Column(name = "status")
+//    @Convert
+//    private int status;
 }
