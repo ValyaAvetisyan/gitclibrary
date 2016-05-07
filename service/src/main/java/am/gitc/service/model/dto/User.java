@@ -1,6 +1,5 @@
 package am.gitc.service.model.dto;
 
-import am.gitc.service.model.lcp.Gender;
 import am.gitc.service.model.lcp.UserStatus;
 
 import javax.persistence.*;
@@ -31,9 +30,9 @@ public class User {
     @Column(name = "age")
     private short age;
 
-    @Column(name = "gender")
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+//    @Column(name = "gender")
+//    @Enumerated(EnumType.STRING)
+//    private Gender gender;
 
     @Column(name = "userStatus")
     private UserStatus userStatus;

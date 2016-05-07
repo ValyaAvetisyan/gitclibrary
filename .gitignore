@@ -4,3 +4,5 @@ target
 common/common.iml
 rest/rest.iml
 web/web.iml
+service/service.iml
+
