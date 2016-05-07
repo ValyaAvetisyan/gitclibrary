@@ -1,3 +1,6 @@
 .idea
 target
 .idea/vcs.xml
+common/common.iml
+rest/rest.iml
+web/web.iml
