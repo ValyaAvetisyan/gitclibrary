@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragment/header::head(title='login')">
+</head>
+<body class="container">
+<h1>login page</h1>
+	<!--<div th:include="fragment/headerLangs :: langs">-->
+	<!--</div>-->
+
+	<!--<div class="wrapper">-->
+	    <!--<form th:action="@{/login}" th:object="${userLoginCmd}" method="POST" class="form-signin">-->
+		    <!--<h2 align="center" th:text="#{pleaseLogin}"></h2>-->
+	<!---->
+	        <!--<span class="form-signin-heading" th:text="${msg_incorrect}"></span>-->
+	        <!--<span th:if="msgWithoutLogin != null" th:text="${session.msg_without_login}"></span>-->
+	        <!--<span class="form-signin-heading" th:text="${afterRegistrationMsg}"></span>-->
+	<!---->
+	        <!--<span class="form-signin-heading" th:if="${#fields.hasErrors('userName')}" th:text="#{error.username}"></span>-->
+	        <!--<input th:type=" text" th:placeholder="#{username}" th:field="*{userName}" class="form-control"/><br/>-->
+	        <!--<span class="form-signin-heading" th:if="${#fields.hasErrors('password')}" th:text="#{error.password}"></span>-->
+	        <!--<input th:type="password" th:placeholder="#{password}" th:field="*{password}" class="form-control"/><br/>-->
+	<!---->
+	        <!--<button class="btn btn-lg btn-primary btn-block" type="submit" th:text="'Log In'"></button><br/>-->
+	        <!--<a th:href="@{/register}" th:text="#{createAccount}"></a>-->
+	    <!--</form>-->
+	<!--</div>-->
+</body>
+</html>
