@@ -4,12 +4,14 @@ import am.gitc.common.model.entity.User;
 import am.gitc.service.repository.UserRepository;
 import am.gitc.service.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Zorik Zaqaryan on 14.03.2016.
  */
+@Service
 public class UserServiceImpl implements IUserService {
 
     @Autowired

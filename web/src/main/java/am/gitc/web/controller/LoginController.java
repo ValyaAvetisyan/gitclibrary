@@ -1,9 +1,11 @@
 package am.gitc.web.controller;
 
 
+import am.gitc.service.service.impl.UserServiceImpl;
 import am.gitc.web.model.UserLoginCmd;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,10 +24,12 @@ public class LoginController {
     private static final Logger log = LogManager.getLogger(LoginController.class);
     public static final String LOGIN = "/login";
 
+    @Autowired
+    UserServiceImpl userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm(Model model) {
-        UserLoginCmd userFormCmd = new UserLoginCmd();
+                                UserLoginCmd userFormCmd = new UserLoginCmd();
         model.addAttribute("userLoginCmd", userFormCmd);
 //        if (afterRegistration) {
 //            model.put("afterRegistrationMsg", "Your registration was succesful. Thank you.");
