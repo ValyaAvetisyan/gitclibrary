@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:db-config.properties")
-@EntityScan("am.gitc.service.model")
+@EntityScan("am.gitc.common.model.entity")
 @EnableJpaRepositories("am.gitc.service")
 @EnableTransactionManagement
 public class DataConfig {

@@ -1,6 +1,5 @@
-package am.gitc.service.model.dto;
+package am.gitc.common.model.entity;
 
-import am.gitc.service.model.lcp.Category;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,9 +18,9 @@ public class Book {
     @Column(name = "name")
     String name;
 
-    @Column(name = "category")
-    @Enumerated(EnumType.STRING)
-    private Category category;
+//    @Column(name = "category")
+//    @Enumerated(EnumType.STRING)
+//    private Category category;
 
     @Column(name = "imageUri")
     private String imageUri;

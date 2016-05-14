@@ -1,4 +1,6 @@
-package am.gitc.service.model.dto;
+package am.gitc.common.model.entity;
+
+import am.gitc.common.model.entity.User;
 
 import javax.persistence.*;
 import java.io.Serializable;

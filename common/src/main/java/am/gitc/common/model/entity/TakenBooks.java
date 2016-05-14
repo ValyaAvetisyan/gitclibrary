@@ -1,4 +1,4 @@
-package am.gitc.service.model.dto;
+package am.gitc.common.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;

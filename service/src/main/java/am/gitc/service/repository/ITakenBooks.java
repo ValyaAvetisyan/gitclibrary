@@ -1,6 +1,6 @@
 package am.gitc.service.repository;
 
-import am.gitc.service.model.dto.TakenBooks;
+import am.gitc.common.model.entity.TakenBooks;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**

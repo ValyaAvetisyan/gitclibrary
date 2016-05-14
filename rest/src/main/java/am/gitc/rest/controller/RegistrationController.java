@@ -1,11 +1,10 @@
 package am.gitc.rest.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.PUT;
-import javax.ws.rs.Produces;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,9 +13,7 @@ import java.util.Map;
 public class RegistrationController {
 
 
-    @PUT
-    @Produces("application/json")
-    @RequestMapping(value = "put")
+    @RequestMapping(value = "put",method = RequestMethod.POST)
     public Map<String, String> register(
             @RequestParam(value = "name") String name,
             @RequestParam(value = "surname") String surname,

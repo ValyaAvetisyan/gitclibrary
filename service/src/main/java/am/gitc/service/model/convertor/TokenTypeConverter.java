@@ -1,6 +1,6 @@
 //package am.gitc.service.model.convertor;
 //
-//import am.gitc.service.model.dto.Token.TokenType;
+//import am.gitc.common.model.entity.Token.TokenType;
 //
 //import javax.persistence.AttributeConverter;
 //

@@ -1,6 +1,6 @@
 package am.gitc.service.repository;
 
-import am.gitc.service.model.dto.User;
+import am.gitc.common.model.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -17,8 +17,8 @@ public interface UserRepository extends PagingAndSortingRepository<User, String>
 
     @Override
     void delete(User u);
-//
-//    @Query(value = "select count(e) > 0 from User e where e.email = ?1")
+
+//    @Query(value = "SELECT u from User u where u.id = ?1")
 //    boolean findByEmail(String email);
 
     @Override
@@ -36,12 +36,6 @@ public interface UserRepository extends PagingAndSortingRepository<User, String>
     @Override
     void delete(String s);
 
-//    List<User> getAllUser();
-//
-//    void editUser(User user);
-//
-//    boolean isExistingUser(User user);
-//
-//    void changeStatus(User user);
+    User findById(Long id);
 
 }

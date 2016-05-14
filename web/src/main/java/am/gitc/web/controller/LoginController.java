@@ -2,6 +2,8 @@ package am.gitc.web.controller;
 
 
 import am.gitc.web.model.UserLoginCmd;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,14 +16,14 @@ import javax.validation.Valid;
 
 
 @Controller
-//@RequestMapping(value = LoginController.LOGIN)
+@RequestMapping
 //@SessionAttributes(URIConstants.LOGGED_USER)
 public class LoginController {
-//    private static final Logger log = LogManager.getLogger();
+    private static final Logger log = LogManager.getLogger(LoginController.class);
     public static final String LOGIN = "/login";
 
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm(Model model) {
         UserLoginCmd userFormCmd = new UserLoginCmd();
         model.addAttribute("userLoginCmd", userFormCmd);
@@ -38,7 +40,7 @@ public class LoginController {
         return "redirect:/login";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String processLogin(@Valid @ModelAttribute("userLoginCmd") UserLoginCmd user, BindingResult result,
                                Model model) {
 

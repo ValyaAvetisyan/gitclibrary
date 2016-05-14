@@ -1,6 +1,4 @@
-package am.gitc.service.model.dto;
-
-import am.gitc.service.model.lcp.UserStatus;
+package am.gitc.common.model.entity;
 
 import javax.persistence.*;
 
@@ -34,8 +32,8 @@ public class User {
 //    @Enumerated(EnumType.STRING)
 //    private Gender gender;
 
-    @Column(name = "userStatus")
-    private UserStatus userStatus;
+//    @Column(name = "userStatus")
+//    private UserStatus userStatus;
 
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    Set<Book> books;

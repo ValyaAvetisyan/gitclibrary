@@ -1,6 +1,6 @@
 package am.gitc.service.repository;
 
-import am.gitc.service.model.dto.Book;
+import am.gitc.common.model.entity.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
