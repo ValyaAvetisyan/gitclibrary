@@ -15,7 +15,6 @@ import java.util.Map;
 public class LoginController {
 
 
-
     @GET
     @Produces("application/json")
     @RequestMapping("/get")
