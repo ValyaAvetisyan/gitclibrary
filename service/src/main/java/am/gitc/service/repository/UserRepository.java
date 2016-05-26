@@ -36,7 +36,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, String>
     @Override
     void delete(String s);
 
-    User findByUsernameAndPassword(String username, String password);
+    User findByEmailAndPassword(String email, String password);
 
     User findById(Long id);
 
