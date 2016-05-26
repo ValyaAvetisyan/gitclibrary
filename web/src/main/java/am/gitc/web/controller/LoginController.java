@@ -27,6 +27,8 @@ public class LoginController {
     @Autowired
     UserServiceImpl userService;
 
+    String dd;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm(Model model) {
         UserLoginCmd userFormCmd = new UserLoginCmd();
