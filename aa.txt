@@ -8,3 +8,5 @@ git commit -m 'some comment'
 git status
 git push origin some_branch
 git status
+
+Kcho el es dzev baner mi gre stex
