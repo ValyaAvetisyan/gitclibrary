@@ -1,14 +1,14 @@
 package am.gitc.web.controller;
 
-import am.gitc.common.model.entity.Gender;
 import am.gitc.common.model.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.LinkedList;
-import java.util.List;
+import javax.validation.Valid;
 
 /**
  * Created by Zorik Zaqaryan on 15.05.2016.
@@ -21,14 +21,20 @@ public class RegistrationController {
     @RequestMapping(method = RequestMethod.GET)
     public String initPage(Model model) {
         model.addAttribute("userForm", getUser());
-        model.addAttribute("genderList", getGenderList());
+//        model.addAttribute("genderList", getGenderList());
         return "registration";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String registerUser(Model model, User user) {
+    public String registerUser(Model model, @Valid @ModelAttribute("userForm") User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("userForm", user);
+            return "registration";
+        }
         model.addAttribute("userForm", user);
 //        model.addAttribute("genderList", getGenderList());
+
+        model.addAttribute("userForm", user);
 
         return "registration";
     }
@@ -39,19 +45,19 @@ public class RegistrationController {
     }
 
 
-    public List<Gender> getGenderList() {
-        List<Gender> genders = new LinkedList<>();
-        //
-        Gender male = new Gender();
-        male.setId(1);
-        male.setType("MALE");
-        //
-        Gender female = new Gender();
-        male.setId(2);
-        male.setType("FEMALE");
-
-        genders.add(male);
-        genders.add(female);
-        return genders;
-    }
+//    public List<Gender> getGenderList() {
+//        List<Gender> genders = new LinkedList<>();
+//        //
+//        Gender male = new Gender();
+//        male.setId(1);
+//        male.setType("MALE");
+//        //
+//        Gender female = new Gender();
+//        male.setId(2);
+//        male.setType("FEMALE");
+//
+//        genders.add(male);
+//        genders.add(female);
+//        return genders;
+//    }
 }

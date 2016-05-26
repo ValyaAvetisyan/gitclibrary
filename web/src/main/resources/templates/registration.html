@@ -24,10 +24,10 @@
         <span class="form-signin-heading" th:if="${#fields.hasErrors('email')}" th:text="#{error.email}"></span>
         <input th:type="email" th:placeholder="#{email}" th:field="*{email}" class="form-control"/>
 
-        <select class="form-control" th:field="*{genderId}">
-            <option value="1">MALE</option>
-            <option value="2">FEMALE</option>
-        </select>
+        <!--<select class="form-control" th:field="*{genderId}">-->
+            <!--<option value="1">MALE</option>-->
+            <!--<option value="2">FEMALE</option>-->
+        <!--</select>-->
 
         <span class="form-signin-heading" th:if="${#fields.hasErrors('password')}" th:text="#{error.password}"></span>
         <input th:type="password" th:placeholder="#{password}" th:field="*{password}" class="form-control"/>
