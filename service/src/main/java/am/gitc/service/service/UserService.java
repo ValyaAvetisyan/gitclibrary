@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Zorik Zaqaryan on 14.03.2016.
  */
-public interface IUserService {
+public interface UserService {
     List<User> getAllUser();
 
     User addUser(User user);
