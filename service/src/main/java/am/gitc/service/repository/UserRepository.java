@@ -18,9 +18,6 @@ public interface UserRepository extends PagingAndSortingRepository<User, String>
     @Override
     void delete(User u);
 
-//    @Query(value = "SELECT u from User u where u.id = ?1")
-//    boolean findByEmail(String email);
-
     @Override
     Page<User> findAll(Pageable var1);
 
