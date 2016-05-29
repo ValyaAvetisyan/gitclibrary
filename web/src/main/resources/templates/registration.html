@@ -11,17 +11,21 @@
     <h2 align="center" th:text="#{createAccount}"></h2>
     <form action="#" th:action="@{/register}" th:object="${userForm}" method="POST" class="form-signin">
 
-        <span class="form-signin-heading" th:if="${#fields.hasErrors('name')}" th:text="#{error.name}"></span>
+        <!--<span class="form-signin-heading" th:if="${#fields.hasErrors('name')}" th:text="#{error.name}"></span>-->
+        <span class="form-signin-heading alert-danger" th:each="err : ${#fields.errors('name')}" th:text="${err}"></span>
         <input th:type="text" th:placeholder="#{name}" th:value="*{name}" th:field="*{name}"
                class="form-control"/>
 
-        <span class="form-signin-heading" th:if="${#fields.hasErrors('surname')}" th:text="#{error.surname}"></span>
+        <!--<span class="form-signin-heading" th:if="${#fields.hasErrors('surname')}" th:text="#{error.surname}"></span>-->
+        <span class="form-signin-heading alert-danger" th:each="err : ${#fields.errors('surname')}" th:text="${err}"></span>
         <input th:type="text" th:placeholder="#{surname}" th:field="*{surname}" class="form-control"/>
 
-        <span class="form-signin-heading" th:if="${#fields.hasErrors('age')}" th:text="#{error.age}"></span>
+        <!--<span class="form-signin-heading" th:if="${#fields.hasErrors('age')}" th:text="#{error.age}"></span>-->
+        <span class="form-signin-heading alert-danger" th:each="err : ${#fields.errors('age')}" th:text="${err}"></span>
         <input type="number" th:placeholder="#{age}" th:field="*{age}" class="form-control"/>
 
-        <span class="form-signin-heading" th:if="${#fields.hasErrors('email')}" th:text="#{error.email}"></span>
+        <!--<span class="form-signin-heading" th:if="${#fields.hasErrorsail')}" th:text="#{error.email}"></span>-->
+        <span class="form-signin-heading alert-danger" th:each="err : ${#fields.errors('email')}" th:text="${err}"></span>
         <input th:type="email" th:placeholder="#{email}" th:field="*{email}" class="form-control"/>
 
         <!--<select class="form-control" th:field="*{genderId}">-->
@@ -29,7 +33,8 @@
             <!--<option value="2">FEMALE</option>-->
         <!--</select>-->
 
-        <span class="form-signin-heading" th:if="${#fields.hasErrors('password')}" th:text="#{error.password}"></span>
+        <!--<span class="form-signin-heading" th:if="${#fields.hasErrors('password')}" th:text="#{error.password}"></span>-->
+        <span class="form-signin-heading alert-danger" th:each="err : ${#fields.errors('password')}" th:text="${err}"></span>
         <input th:type="password" th:placeholder="#{password}" th:field="*{password}" class="form-control"/>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{createAccount}"></button>

@@ -28,5 +28,39 @@ public class TakenBooks {
     @Column(name = "end_date")
     private Date endDate;
 
+    public Long getId() {
+        return id;
+    }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Date getTakenDate() {
+        return takenDate;
+    }
+
+    public void setTakenDate(Date takenDate) {
+        this.takenDate = takenDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 }
