@@ -40,4 +40,28 @@ public class Book {
 //    @Column(name = "status")
 //    @Convert
 //    private int status;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setReservedCount(int reservedCount) {
+        this.reservedCount = reservedCount;
+    }
 }
