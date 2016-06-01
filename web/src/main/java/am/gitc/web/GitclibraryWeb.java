@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ImportResource;
         "am.gitc.web",
         "am.gitc.service"
 })
-@ImportResource("/config/i18.xml")
+@ImportResource("classpath*:/config/i18.xml")
 public class GitcLibraryWeb extends SpringBootServletInitializer {
 
     /**

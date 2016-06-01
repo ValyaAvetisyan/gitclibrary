@@ -8,5 +8,9 @@
     <nav th:replace="fragment/menu::menu"></nav>
 </div>
 
+<!--<div th:if="${pager.totalItems > 5}" class="row">-->
+    <div th:replace="fragment/pagination :: [id='paginator']"></div>
+<!--</div>-->
+
 </body>
 </html>
