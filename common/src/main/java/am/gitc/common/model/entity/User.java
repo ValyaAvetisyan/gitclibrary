@@ -1,11 +1,6 @@
 package am.gitc.common.model.entity;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 /**
  * Created by Zorik Zaqaryan on 08.03.2016.
@@ -19,29 +14,18 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    @NotEmpty(message = "")
-    @Size(min = 2, max = 30, message = "Name size must be between 2 and 30")
     private String name;
 
     @Column(name = "surname")
-    @NotEmpty(message = "")
-    @Size(min = 2, max = 30, message = "Surname size must be between 2 and 30")
     private String surname;
 
     @Column(name = "email")
-    @NotEmpty(message = "Email is Required")
-    @Email
     private String email;
 
     @Column(name = "password")
-    @NotEmpty(message = "")
-    @Length(min = 4, max = 12, message = "Password length must be between 4 and 12")
     private String password;
 
     @Column(name = "age")
-    @NotNull(message = "Age is Required")
-    @Min(value = 7, message = "Age can be started 7")
-    @Max(value = 60, message = "Age can't be great than 60")
     private Short age;
 
 
