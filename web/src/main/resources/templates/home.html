@@ -12,5 +12,8 @@
     <div th:replace="fragment/pagination :: [id='paginator']"></div>
 <!--</div>-->
 
+
+<div th:include="fragment/scripts :: [id='scripts']" th:remove="tag">Scripts</div>
+<div th:include="fragment/alerts :: [id='alerts']" th:remove="tag">Alerts</div>
 </body>
 </html>

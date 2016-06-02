@@ -7,7 +7,7 @@
 				<ul class="pagination">
 					<li th:class="${pager.currentIndex == 1}? 'disabled' : ''"><span
 						th:if='${pager.currentIndex == 1}'>First</span> <a
-						th:if='${pager.currentIndex != 1}' th:href="@{/products/page/1}">First</a>
+						th:if='${pager.currentIndex != 1}' th:href="@{/books/page/1}">First</a>
 					</li>
 					<li th:class="${pager.currentIndex != 1}? '' : 'disabled'"><span
 						th:if='${pager.currentIndex == 1}'>«</span> <a
