@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping
 public class HomeController {
 
-    private static final int BOOK_LIST_PAGE_SIZE = 5;
+    private static final int BOOK_LIST_PAGE_SIZE = 10;
     private static final String BOOK_LIST_BASEURL = "/books/page/";
     private static final String SESSION_ATTRIBUTE_BOOK_LIST = "BookList";
     private static final String MODEL_ATTRIBUTE_PAGER = "pager";

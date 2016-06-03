@@ -6,16 +6,19 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <!--<a class="navbar-brand"-->
-               <!--th:href="@{'http://'+-->
-               <!--${#httpServletRequest.getServerName()}+-->
-               <!--':'-->
-               <!--+${#httpServletRequest.getServerPort()}+-->
-               <!--'/client/'+${#strings.toLowerCase(session.loggedUser.role)}}"-->
-               <!--th:text="#{vqportal}"></a>-->
+            <!--th:href="@{'http://'+-->
+            <!--${#httpServletRequest.getServerName()}+-->
+            <!--':'-->
+            <!--+${#httpServletRequest.getServerPort()}+-->
+            <!--'/client/'+${#strings.toLowerCase(session.loggedUser.role)}}"-->
+            <!--th:text="#{vqportal}"></a>-->
         </div>
         <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" th:href="@{/books}" th:text="#{gitcLibrart}"></a></li>
             <li><a th:href="@{/profile/edit}" th:text="#{editProfile}"></a></li>
-            <li><a th:href="@{/profile}" th:text="#{myProfile}"></a></li>
+            <li><a th:href="@{/books/}" th:text="#{allBooks}"></a></li>
+            <li><a th:href="@{/pdfBooks/}" th:text="#{PDFBooks}"></a></li>
+            <li><a th:href="@{/takenBooks/}" th:text="#{takenBooks}"></a></li>
             <!--<li><a th:href="@{'/'+${#strings.toLowerCase(session.loggedUser.role)}+'/video'}" th:text="#{myVideo}"></a></li>-->
             <li><a th:href="@{/login/logout}" th:text="#{logout}"></a></li>
         </ul>

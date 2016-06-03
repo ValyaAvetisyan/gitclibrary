@@ -42,24 +42,57 @@ public class Book implements Serializable {
 //    @Convert
 //    private int status;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageUri() {
+        return imageUri;
     }
 
     public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Date getAddedDate() {
+        return addedDate;
     }
 
     public void setAddedDate(Date addedDate) {
         this.addedDate = addedDate;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getReservedCount() {
+        return reservedCount;
     }
 
     public void setReservedCount(int reservedCount) {
