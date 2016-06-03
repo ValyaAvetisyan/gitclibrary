@@ -50,7 +50,9 @@ public class HomeController {
                 .getAttribute(SESSION_ATTRIBUTE_BOOK_LIST);
 
         if (pagedListHolder == null) {
-            pagedListHolder = new PagedListHolder<Book>(bookService.findAll());
+            pagedListHolder = new PagedListHolder<>();
+
+            pagedListHolder.setSource(bookService.findAll());
             pagedListHolder.setPageSize(BOOK_LIST_PAGE_SIZE);
 
         } else {
@@ -107,14 +109,6 @@ public class HomeController {
 //            return "redirect:/products/" + product.getId();
 //        }
 //    }
-
-
-
-
-
-
-
-
 
 
     private Pager currentPage(PagedListHolder<?> pagedListHolder) {
