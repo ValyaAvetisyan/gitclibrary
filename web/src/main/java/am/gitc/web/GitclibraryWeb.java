@@ -22,7 +22,6 @@ public class GitcLibraryWeb extends SpringBootServletInitializer {
         return application.sources(GitcLibraryWeb.class);
     }
 
-
     public static void main(String[] args) {
         SpringApplication.run(GitcLibraryWeb.class, args);
     }

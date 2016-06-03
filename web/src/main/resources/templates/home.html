@@ -8,9 +8,16 @@
     <nav th:replace="fragment/menu::menu"></nav>
 </div>
 
-<!--<div th:if="${pager.totalItems > 5}" class="row">-->
-    <div th:replace="fragment/pagination :: [id='paginator']"></div>
-<!--</div>-->
+<div class="container">
+    <div th:replace="fragment/bookPosts :: [id='grid-table']"></div>
+</div>
 
+<div th:if="${pager.totalItems > 5}" class="row">
+    <div th:replace="fragment/pagination :: [id='paginator']"></div>
+</div>
+
+
+<div th:include="fragment/scripts :: [id='scripts']" th:remove="tag">Scripts</div>
+<div th:include="fragment/alerts :: [id='alerts']" th:remove="tag">Alerts</div>
 </body>
 </html>
