@@ -4,8 +4,8 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 public enum RoleEnum {
-    USER(1),
-    ADMIN(2);
+    ADMIN(1),
+    USER(2);
 
 
     private int id;

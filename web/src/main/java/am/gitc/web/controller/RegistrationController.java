@@ -43,21 +43,4 @@ public class RegistrationController {
     public User getUser() {
         return new User();
     }
-
-
-//    public List<Gender> getGenderList() {
-//        List<Gender> genders = new LinkedList<>();
-//        //
-//        Gender male = new Gender();
-//        male.setId(1);
-//        male.setType("MALE");
-//        //
-//        Gender female = new Gender();
-//        male.setId(2);
-//        male.setType("FEMALE");
-//
-//        genders.add(male);
-//        genders.add(female);
-//        return genders;
-//    }
 }

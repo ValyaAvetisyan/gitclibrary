@@ -19,12 +19,10 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    @NotEmpty(message = "")
     @Size(min = 2, max = 30, message = "Name size must be between 2 and 30")
     private String name;
 
     @Column(name = "surname")
-    @NotEmpty(message = "")
     @Size(min = 2, max = 30, message = "Surname size must be between 2 and 30")
     private String surname;
 
@@ -34,7 +32,6 @@ public class User {
     private String email;
 
     @Column(name = "password")
-    @NotEmpty(message = "")
     @Length(min = 4, max = 12, message = "Password length must be between 4 and 12")
     private String password;
 
@@ -44,8 +41,9 @@ public class User {
     @Max(value = 60, message = "Age can't be great than 60")
     private Short age;
 
-
-    private Integer genderId;
+    @Column(name = "role_id")
+    @Convert(converter = RoleEnum.RoleConverter.class)
+    private RoleEnum role;
 
     public Long getId() {
         return id;
@@ -95,11 +93,11 @@ public class User {
         this.age = age;
     }
 
-    public Integer getGenderId() {
-        return genderId;
+    public RoleEnum getRole() {
+        return role;
     }
 
-    public void setGenderId(Integer genderId) {
-        this.genderId = genderId;
+    public void setRole(RoleEnum role) {
+        this.role = role;
     }
 }
