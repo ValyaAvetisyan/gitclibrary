@@ -1,6 +1,8 @@
 package am.gitc.common.model.entity;
 
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,6 +19,7 @@ public class Book implements Serializable {
     private Long id;
 
     @Column(name = "name")
+    @NotEmpty
     private String name;
 
     @Column(name = "category")
@@ -25,7 +28,11 @@ public class Book implements Serializable {
     @Column(name = "imageUri")
     private String imageUri;
 
+    @Column(name = "fileUri")
+    private String fileUri;
+
     @Column(name = "author")
+    @NotEmpty
     private String author;
 
     @Column(name = "addedDate")
@@ -104,5 +111,13 @@ public class Book implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getFileUri() {
+        return fileUri;
+    }
+
+    public void setFileUri(String fileUri) {
+        this.fileUri = fileUri;
     }
 }

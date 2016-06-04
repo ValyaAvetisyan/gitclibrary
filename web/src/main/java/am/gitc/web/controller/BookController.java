@@ -1,5 +1,6 @@
 package am.gitc.web.controller;
 
+import am.gitc.common.FileUtil;
 import am.gitc.common.model.entity.Book;
 import am.gitc.service.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,23 +30,32 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    ServletContext context;
+
     @RequestMapping(value = VIEW_NAME, method = RequestMethod.GET)
-    public String addBook(@ModelAttribute(CMD_NAME) Book bookCmd, Model model) {
+    public String addBook(@ModelAttribute(CMD_NAME) Book bookCmd, Model model, HttpSession session) {
         model.addAttribute("bookCmd", bookCmd);
-        return "/admin"+VIEW_NAME;
+        model.addAttribute("path", "data/kk.png");
+        String str= context.getContextPath();
+        FileUtil.createBookFolderById(10l,"C:\\Users\\i7\\Documents\\GitHub\\gitclibrary\\web\\src\\main\\resources\\static\\data\\");
+        return "/admin" + VIEW_NAME;
     }
 
 
     @RequestMapping(value = VIEW_NAME, method = RequestMethod.POST)
     public String addBookInit(@Valid @ModelAttribute(CMD_NAME) Book bookCmd,
-                              BindingResult result, Model model) {
+                              BindingResult result, Model model,
+                              @RequestParam(name = "file") MultipartFile file,
+                              @RequestParam(name = "image") MultipartFile image
+    ) {
 
         if (result.hasErrors()) {
-            return VIEW_NAME;
+            return "/admin" + VIEW_NAME;
         }
 
         model.addAttribute("bookCmd", bookCmd);
-        return "/admin"+VIEW_NAME;
+        return "/admin" + VIEW_NAME;
     }
 
     @ModelAttribute("categories")

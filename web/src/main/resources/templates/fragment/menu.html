@@ -4,30 +4,31 @@
 <body>
 <nav class="navbar navbar-default" th:fragment="menu">
     <!--<div class="container-fluid" th:if="${#strings.toLowerCase(session.loggedUser.role).equals('admin')}">-->
-        <ul class="nav navbar-nav">
-            <li><a class="navbar-brand" th:href="@{/books}" th:text="#{gitcLibrary}"></a></li>
-            <li><a th:href="@{/admin/books}" th:text="#{books}"></a></li>
-            <li><a th:href="@{/books/}" th:text="#{books}"></a></li>
-            <li><a th:href="@{/pdfBooks/}" th:text="#{pdfBooks}"></a></li>
-            <li><a th:href="@{/takenBooks/}" th:text="#{takenBooks}"></a></li>
-        </ul>
-        <div class="row pull-right" th:include="fragment/headerLangs :: langs">
-        </div>
+    <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" th:href="@{/books}" th:text="#{gitcLibrary}"></a></li>
+        <li><a th:href="@{/admin/books}" th:text="#{books}"></a></li>
+        <li><a th:href="@{/books/}" th:text="#{books}"></a></li>
+        <li><a th:href="@{/pdfBooks/}" th:text="#{pdfBooks}"></a></li>
+        <li><a th:href="@{/takenBooks/}" th:text="#{takenBooks}"></a></li>
+        <li><a th:href="@{/addBook/}" th:text="#{addBook}"></a></li>
+    </ul>
+    <div class="row pull-right" th:include="fragment/headerLangs :: langs">
+    </div>
 
 </nav>
 <!--<nav class="navbar navbar-default" th:fragment="menu">-->
-    <!--<div class="container-fluid" th:if="${#strings.toLowerCase(session.loggedUser.role).equals('admin')}">-->
-        <!--<div class="navbar-header">-->
-            <!--<a class="navbar-brand" th:href="@{/seller}" th:text="#{gitcLibrary}"></a>-->
-        <!--</div>-->
-        <!--<ul class="nav navbar-nav">-->
-            <!--<li><a th:href="@{/seller/books}" th:text="#{books}"></a></li>-->
-            <!--<li><a th:href="@{/seller/pdfBooks}" th:text="#{pdfBooks}"></a></li>-->
-            <!--<li><a th:href="@{/login/logout}" th:text="#{logout}"></a></li>-->
-        <!--</ul>-->
-        <!--<div class="row pull-right" th:include="fragment/headerLangs :: langs">-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<div class="container-fluid" th:if="${#strings.toLowerCase(session.loggedUser.role).equals('admin')}">-->
+<!--<div class="navbar-header">-->
+<!--<a class="navbar-brand" th:href="@{/seller}" th:text="#{gitcLibrary}"></a>-->
+<!--</div>-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li><a th:href="@{/seller/books}" th:text="#{books}"></a></li>-->
+<!--<li><a th:href="@{/seller/pdfBooks}" th:text="#{pdfBooks}"></a></li>-->
+<!--<li><a th:href="@{/login/logout}" th:text="#{logout}"></a></li>-->
+<!--</ul>-->
+<!--<div class="row pull-right" th:include="fragment/headerLangs :: langs">-->
+<!--</div>-->
+<!--</div>-->
 <!--</nav>-->
 </body>
 </html>
