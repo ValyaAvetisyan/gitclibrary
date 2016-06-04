@@ -1,5 +1,7 @@
 package am.gitc.common.model.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 
 /**
@@ -14,23 +16,28 @@ public class User {
     private Long id;
 
     @Column(name = "name")
+    @NotEmpty
     private String name;
 
     @Column(name = "surname")
+    @NotEmpty
     private String surname;
 
     @Column(name = "email")
+    @NotEmpty
     private String email;
 
     @Column(name = "password")
+    @NotEmpty
     private String password;
 
     @Column(name = "age")
+    @NotEmpty
     private Short age;
-
-    @Column(name = "role_id")
-    @Convert(converter = RoleEnum.RoleConverter.class)
-    private RoleEnum role;
+    
+    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public Long getId() {
         return id;
@@ -80,11 +87,11 @@ public class User {
         this.age = age;
     }
 
-    public RoleEnum getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

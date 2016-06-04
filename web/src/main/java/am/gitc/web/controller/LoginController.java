@@ -55,8 +55,13 @@ public class LoginController {
             log.debug("Incorrect Login or Password");
             return "login";
         }
+
         model.addAttribute("sessionUser", authenticatedUser);
         session.setAttribute("loggedUSer", authenticatedUser);
+
+        if (authenticatedUser.getRole().equals("ADMIN")) {
+            return "redirect:/" + "admin";
+        }
         return "redirect:/" + "home";
     }
 

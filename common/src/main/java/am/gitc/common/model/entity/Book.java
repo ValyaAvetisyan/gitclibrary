@@ -17,11 +17,10 @@ public class Book implements Serializable {
     private Long id;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
-//    @Column(name = "category")
-//    @Enumerated(EnumType.STRING)
-//    private Category category;
+    @Column(name = "category")
+    private String category;
 
     @Column(name = "imageUri")
     private String imageUri;
@@ -97,5 +96,13 @@ public class Book implements Serializable {
 
     public void setReservedCount(int reservedCount) {
         this.reservedCount = reservedCount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

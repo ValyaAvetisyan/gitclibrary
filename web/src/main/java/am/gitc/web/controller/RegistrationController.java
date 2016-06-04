@@ -1,6 +1,8 @@
 package am.gitc.web.controller;
 
 import am.gitc.common.model.entity.User;
+import am.gitc.service.service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +20,9 @@ import javax.validation.Valid;
 public class RegistrationController {
     public static final String CONTROLLER_NAME = "/register";
 
+    @Autowired
+    UserServiceImpl userService;
+
     @RequestMapping(method = RequestMethod.GET)
     public String initPage(Model model) {
         model.addAttribute("userForm", getUser());
@@ -28,15 +33,20 @@ public class RegistrationController {
     @RequestMapping(method = RequestMethod.POST)
     public String registerUser(Model model, @Valid @ModelAttribute("userForm") User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("userForm", user);
             return "registration";
         }
-        model.addAttribute("userForm", user);
-//        model.addAttribute("genderList", getGenderList());
 
-        model.addAttribute("userForm", user);
+        User dbUser = userService.authenticate(user.getEmail(), user.getPassword());
 
-        return "registration";
+//        model.addAttribute("userForm", user);
+        if (dbUser == null || dbUser.getEmail().equals("")) {
+            model.addAttribute("message", "User with this username already exists");
+            return "registration";
+        }
+
+        userService.addUser(user);
+        model.addAttribute("message", "You have Successful registered");
+        return "login";
     }
 
 
