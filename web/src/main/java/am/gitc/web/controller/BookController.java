@@ -1,6 +1,5 @@
 package am.gitc.web.controller;
 
-import am.gitc.common.FileUtil;
 import am.gitc.common.model.entity.Book;
 import am.gitc.service.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ import java.util.List;
 @Controller
 public class BookController {
     private static final String CMD_NAME = "bookCmd";
-    private static final String VIEW_NAME = "/addBook";
+    private static final String VIEW_NAME = "/admin" + "/addBook";
 
     @Autowired
     BookService bookService;
@@ -37,9 +36,8 @@ public class BookController {
     public String addBook(@ModelAttribute(CMD_NAME) Book bookCmd, Model model, HttpSession session) {
         model.addAttribute("bookCmd", bookCmd);
         model.addAttribute("path", "data/kk.png");
-        String str= context.getContextPath();
-        FileUtil.createBookFolderById(10l,"C:\\Users\\i7\\Documents\\GitHub\\gitclibrary\\web\\src\\main\\resources\\static\\data\\");
-        return "/admin" + VIEW_NAME;
+
+        return VIEW_NAME;
     }
 
 
@@ -51,11 +49,15 @@ public class BookController {
     ) {
 
         if (result.hasErrors()) {
-            return "/admin" + VIEW_NAME;
+            return VIEW_NAME;
+        }
+
+        if (file.isEmpty() || image.isEmpty()) {
+            return VIEW_NAME;
         }
 
         model.addAttribute("bookCmd", bookCmd);
-        return "/admin" + VIEW_NAME;
+        return VIEW_NAME;
     }
 
     @ModelAttribute("categories")

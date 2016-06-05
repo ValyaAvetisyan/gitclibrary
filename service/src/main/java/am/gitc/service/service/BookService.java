@@ -4,6 +4,7 @@ import am.gitc.common.model.entity.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface BookService {
 
     Page<Book> findAll(Pageable pageable);
 
-    Book save(Book s);
+    Book save(Book s, MultipartFile file, MultipartFile iamge, String path);
 
     Book findOne(Long id);
 

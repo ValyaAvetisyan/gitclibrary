@@ -28,7 +28,7 @@ public class HomeControllerTest {
     @Before
     public void setUp() throws Exception {
         for (int i = 0; i < 200; i++) {
-            bookService.save(getBook());
+//            bookService.save(getBook());
         }
     }
 
