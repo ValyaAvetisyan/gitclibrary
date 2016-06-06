@@ -26,7 +26,6 @@ public class RegistrationController {
     @RequestMapping(method = RequestMethod.GET)
     public String initPage(Model model) {
         model.addAttribute("userForm", getUser());
-//        model.addAttribute("genderList", getGenderList());
         return "registration";
     }
 

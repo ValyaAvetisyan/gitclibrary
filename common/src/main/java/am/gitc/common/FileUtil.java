@@ -16,9 +16,9 @@ import java.nio.file.Paths;
  */
 public class FileUtil {
 
-    public static void createBookFolderById(Long id, String dirPath) {
+    public static void createBookFolderById(String dirPath) {
         try {
-            Path path = Paths.get(dirPath + id);
+            Path path = Paths.get(dirPath );
             Files.createDirectories(path);
 //            Path imagePath = Paths.get(path + "/img");
 //            Path pdfPath = Paths.get(path + "/pdf");

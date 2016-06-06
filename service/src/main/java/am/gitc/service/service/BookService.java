@@ -16,7 +16,7 @@ public interface BookService {
 
     Page<Book> findAll(Pageable pageable);
 
-    Book save(Book s, MultipartFile file, MultipartFile iamge, String path);
+    Book save(Book s, MultipartFile file, MultipartFile iamge);
 
     Book findOne(Long id);
 

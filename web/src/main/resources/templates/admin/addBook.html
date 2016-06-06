@@ -16,7 +16,7 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-    <form action="#" th:action="@{/addBook}" th:object="${bookCmd}" method="POST" class="form-signin"
+    <form action="#" th:action="@{/admin/addBook}" th:object="${bookCmd}" method="POST" class="form-signin"
           enctype="multipart/form-data">
         <span class="form-signin-heading alert-danger" th:if="${#fields.hasErrors('name')}"
               th:text="#{error.name}"></span>

@@ -1,5 +1,6 @@
 package am.gitc.web.controller;
 
+import am.gitc.common.FileUtil;
 import am.gitc.common.model.entity.Book;
 import am.gitc.service.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
 
+import static am.gitc.common.Constants.STORAGE_PATH;
+
 /**
  * Created by zorikz on 06/03/2016.
  */
@@ -35,7 +38,7 @@ public class BookController {
     @RequestMapping(value = VIEW_NAME, method = RequestMethod.GET)
     public String addBook(@ModelAttribute(CMD_NAME) Book bookCmd, Model model, HttpSession session) {
         model.addAttribute("bookCmd", bookCmd);
-        model.addAttribute("path", "data/kk.png");
+//        model.addAttribute("path", "C:\\Users\\zorikz\\Documents\\gitclibrary\\web\\src\\main\\resources\\static\\data\\");
 
         return VIEW_NAME;
     }
@@ -55,6 +58,11 @@ public class BookController {
         if (file.isEmpty() || image.isEmpty()) {
             return VIEW_NAME;
         }
+
+//        bookCmd.setImageUri(STORAGE_PATH + image.getOriginalFilename());
+//        bookCmd.setFileUri(STORAGE_PATH + file.getOriginalFilename());
+        bookService.save(bookCmd, file, image);
+
 
         model.addAttribute("bookCmd", bookCmd);
         return VIEW_NAME;

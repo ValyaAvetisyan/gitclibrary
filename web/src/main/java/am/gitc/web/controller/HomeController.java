@@ -71,46 +71,6 @@ public class HomeController {
         return "home";
     }
 
-//    @RequestMapping(value = "/products/list", method = RequestMethod.GET)
-//    public String processFindForm(UserQuery userQuery, BindingResult result, Model model, HttpServletRequest request) {
-//        List<Book> results = null;
-//
-//        Boolean isSimpleTermQuery = userQuery.getQuery().matches("[a-zA-Z_0-9 ]*");
-//
-//        if (StringUtils.isEmpty(userQuery.getQuery())) {
-//            return "redirect:/products/search";
-//        } else
-//            try {
-//                if (isSimpleTermQuery) {
-//                    HighlightPage<Book> highlightedResults = productService
-//                            .findByHighlightedNameCriteria(userQuery.getQuery());
-//                    results = SolrUtils.highlightPagesToList(highlightedResults);
-//                } else {
-//                    results = productService.getProductsWithUserQuery(userQuery.getQuery());
-//                }
-//            } catch (UncategorizedSolrException ex) {
-//                logger.info(MessageFormat.format("Bad Query: {0}", userQuery.getQuery()));
-//                result.rejectValue("query", "product.search.error", new Object[]{userQuery.getQuery()}, "not found");
-//                return PRODUCT_SEARCH_VIEW;
-//            }
-//
-//        if (results.size() < 1) {
-//            result.rejectValue("query", "product.search.noresults", new Object[]{userQuery.getQuery()}, "not found");
-//            return PRODUCT_SEARCH_VIEW;
-//        }
-//
-//        if (results.size() > 1) {
-//            PagedListHolder<Product> pagedListHolder = new PagedListHolder<Product>(results);
-//            pagedListHolder.setPageSize(PRODUCT_LIST_PAGE_SIZE);
-//            request.getSession().setAttribute(SESSION_ATTRIBUTE_PRODUCTLIST, pagedListHolder);
-//            return "redirect:/products/page/1";
-//        } else {
-//            Product product = results.iterator().next();
-//            return "redirect:/products/" + product.getId();
-//        }
-//    }
-
-
     private Pager currentPage(PagedListHolder<?> pagedListHolder) {
         int currentIndex = pagedListHolder.getPage() + 1;
         int beginIndex = Math.max(1, currentIndex - BOOK_LIST_PAGE_SIZE);

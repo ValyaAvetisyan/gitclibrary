@@ -14,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+import static am.gitc.common.Constants.STORAGE_PATH;
+
 /**
  * Created by zorikz on 06/01/2016.
  */
@@ -29,16 +31,25 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book save(Book s, MultipartFile file, MultipartFile image,String path) {
-
+    public Book save(Book book, MultipartFile file, MultipartFile image) {
+        Book dbBook = null;
         try {
-            FileUtil.saveFile(file.getInputStream(),"","");
+            dbBook = bookRepository.save(book);
+            String fileSavePath = STORAGE_PATH + dbBook.getId() + "\\";
+            dbBook.setFileUri(fileSavePath + file.getOriginalFilename());
+            dbBook.setImageUri(fileSavePath + image.getOriginalFilename());
+            if (file.getInputStream() != null) {
+                FileUtil.createBookFolderById(fileSavePath);
+                FileUtil.saveFile(file.getInputStream(), fileSavePath, file.getOriginalFilename());
+            }
+            if (image.getInputStream() != null) {
+                FileUtil.saveFile(image.getInputStream(), fileSavePath, image.getOriginalFilename());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return bookRepository.save(s);
-
+        bookRepository.save(dbBook);
+        return dbBook;
     }
 
     @Override
