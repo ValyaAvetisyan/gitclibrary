@@ -35,6 +35,10 @@ public class Book implements Serializable {
     @NotEmpty
     private String author;
 
+    @Column(name = "desc")
+    @NotEmpty
+    private String desc;
+
     @Column(name = "addedDate")
     private Date addedDate;
 
@@ -119,5 +123,13 @@ public class Book implements Serializable {
 
     public void setFileUri(String fileUri) {
         this.fileUri = fileUri;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

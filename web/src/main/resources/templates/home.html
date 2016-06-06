@@ -9,8 +9,12 @@
 </div>
 
 <div class="container">
-    <div th:replace="fragment/bookPosts :: [id='grid-table']"></div>
+    <div th:replace="fragment/bookPosts :: [id='grid-table-post']"></div>
 </div>
+
+<!--<div class="container">-->
+    <!--<div th:replace="fragment/bookPosts :: [id='image-post']"></div>-->
+<!--</div>-->
 
 <div th:if="${pager.totalItems > 5}" class="row">
     <div th:replace="fragment/pagination :: [id='paginator']"></div>
