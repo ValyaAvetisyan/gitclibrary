@@ -3,6 +3,7 @@ package am.gitc.service.repository;
 import am.gitc.common.model.entity.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
@@ -24,21 +25,7 @@ public interface BookRepository extends PagingAndSortingRepository<Book, Long> {
     @Override
     List<Book> findAll();
 
-//    @Query(value = "select count(b) from Book b where b.name = ?1")
-//    int findByName(String name);
+    //    @Query(value = "SELECT * from Book b WHERE b.fileUri IS NOT NULL")
+    List<Book> findByFileUriIsNotNull();
 
-//    @Query(value = "select '*' from Book b where b.name = ?1")
-//    List<Book> findByName(Book name);
-//
-//    @Override
-//    boolean exists(Long aLong);
-//
-//    @Override
-//    long count();
-//
-//    @Override
-//    void delete(Long aLong);
-//
-//    @Override
-//    void delete(Book book);
 }

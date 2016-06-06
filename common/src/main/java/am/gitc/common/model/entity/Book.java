@@ -39,10 +39,10 @@ public class Book implements Serializable {
     private Date addedDate;
 
     @Column(name = "count")
-    private int count;
+    private Integer count;
 
     @Column(name = "reservedCount")
-    private int reservedCount;
+    private Integer reservedCount;
 
 //    @Column(name = "status")
 //    @Convert
@@ -89,19 +89,19 @@ public class Book implements Serializable {
         this.addedDate = addedDate;
     }
 
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
-    public int getReservedCount() {
+    public Integer getReservedCount() {
         return reservedCount;
     }
 
-    public void setReservedCount(int reservedCount) {
+    public void setReservedCount(Integer reservedCount) {
         this.reservedCount = reservedCount;
     }
 

@@ -21,4 +21,6 @@ public interface BookService {
     Book findOne(Long id);
 
     List<Book> findAll();
+
+    List<Book> getAllPdfBook();
 }

@@ -1,6 +1,5 @@
 package am.gitc.web.controller;
 
-import am.gitc.common.FileUtil;
 import am.gitc.common.model.entity.Book;
 import am.gitc.service.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +37,6 @@ public class BookController {
     @RequestMapping(value = VIEW_NAME, method = RequestMethod.GET)
     public String addBook(@ModelAttribute(CMD_NAME) Book bookCmd, Model model, HttpSession session) {
         model.addAttribute("bookCmd", bookCmd);
-//        model.addAttribute("path", "C:\\Users\\zorikz\\Documents\\gitclibrary\\web\\src\\main\\resources\\static\\data\\");
-
         return VIEW_NAME;
     }
 
@@ -58,12 +55,21 @@ public class BookController {
         if (file.isEmpty() || image.isEmpty()) {
             return VIEW_NAME;
         }
-
-//        bookCmd.setImageUri(STORAGE_PATH + image.getOriginalFilename());
-//        bookCmd.setFileUri(STORAGE_PATH + file.getOriginalFilename());
+        if (!file.getContentType().equalsIgnoreCase("application/pdf")
+                || !image.getContentType().equalsIgnoreCase("application/msword")
+                || !image.getContentType().equalsIgnoreCase("image/vnd.djvu")
+                ) {
+            model.addAttribute("errorMessage", "imageMessage");
+            return VIEW_NAME;
+        }
+        if (!image.getContentType().equalsIgnoreCase("image/jpg")
+                || !image.getContentType().equalsIgnoreCase("image/png") ||
+                !image.getContentType().equals("image/gif")
+                ) {
+            model.addAttribute("errorMessage", "fileMessage");
+            return VIEW_NAME;
+        }
         bookService.save(bookCmd, file, image);
-
-
         model.addAttribute("bookCmd", bookCmd);
         return VIEW_NAME;
     }

@@ -61,4 +61,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
+
+    @Override
+    public List<Book> getAllPdfBook() {
+        return bookRepository.findByFileUriIsNotNull();
+    }
 }
