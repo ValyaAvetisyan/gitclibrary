@@ -32,6 +32,7 @@ public class HomeController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String initHome(Model model, HttpSession session) {
+
         return "home";
     }
 

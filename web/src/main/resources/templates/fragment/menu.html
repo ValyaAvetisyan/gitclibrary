@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head></head>
 <body>
-<nav class="navbar navbar-default" th:if="${loggedUser.role.id == 1}" th:fragment="menu">
+<nav class="navbar navbar-default" th:if="${session.loggedUser.role.id == 1}" th:fragment="menu">
     <!--<div class="container-fluid" th:if="${#strings.toLowerCase(session.loggedUser.role).equals('admin')}">-->
     <ul class="nav navbar-nav">
         <li><a class="navbar-brand" th:href="@{/books}" th:text="#{gitcLibrary}"></a></li>
@@ -16,8 +16,8 @@
     </div>
 
 </nav>
-//admin menu
-<nav class="navbar navbar-default" th:if="${loggedUser.role.id == 2}" th:fragment="menu">
+<!--//admin menu-->
+<nav class="navbar navbar-default" th:if="${session.loggedUser.role.id == 2}" th:fragment="menu">
     <!--<div class="container-fluid" th:if="${#strings.toLowerCase(session.loggedUser.role).equals('admin')}">-->
     <ul class="nav navbar-nav">
         <li><a class="navbar-brand" th:href="@{/books}" th:text="#{gitcLibrary}"></a></li>
