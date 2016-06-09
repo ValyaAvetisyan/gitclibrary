@@ -30,24 +30,19 @@ public class LoginController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLoginForm(Model model) {
-        UserLoginCmd userFormCmd = new UserLoginCmd();
-        model.addAttribute("userLoginCmd", userFormCmd);
-//        if (afterRegistration) {
-//            model.put("afterRegistrationMsg", "Your registration was succesful. Thank you.");
-//        }
+    public String showLoginForm(Model model, @ModelAttribute("userForm") UserLoginCmd user) {
         return "/login";
     }
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String processLogin(@Valid @ModelAttribute("userLoginCmd") UserLoginCmd user, BindingResult result,
-                               Model model, HttpSession session) {
+    public String processLogin(Model model, HttpSession session, @Valid @ModelAttribute("userForm") UserLoginCmd user, BindingResult result
+    ) {
 
         if (result.hasErrors()) {
             return "login";
         }
-        User authenticatedUser = userService.getUserByCretentials(user.getUserName(), user.getPassword());
+        User authenticatedUser = userService.getUserByCretentials(user.getUsername(), user.getPassword());
 
         if (authenticatedUser == null) {
             model.addAttribute("msg_incorrect", "Incorrect Login or Password");
@@ -56,14 +51,21 @@ public class LoginController {
             return "login";
         }
 
-        model.addAttribute("sessionUser", authenticatedUser);
-        session.setAttribute("loggedUSer", authenticatedUser);
+        model.addAttribute("loggedUser", authenticatedUser);
+        session.setAttribute("loggedUser", authenticatedUser);
 
         if (authenticatedUser.getRole().equals("ADMIN")) {
             return "redirect:/" + "admin";
         }
         return "redirect:/" + "home";
     }
+
+
+
+
+
+
+
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String showLoginForm(HttpSession session) {

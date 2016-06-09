@@ -7,6 +7,7 @@ import java.util.Date;
  * Created by Zorik Zaqaryan on 14.03.2016.
  */
 @Entity
+@Table(name = "taken_books")
 public class TakenBooks {
 
     @Id

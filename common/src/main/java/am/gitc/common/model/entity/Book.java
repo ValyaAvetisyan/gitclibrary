@@ -1,8 +1,6 @@
 package am.gitc.common.model.entity;
 
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,15 +9,14 @@ import java.util.Date;
  * Created by Zorik Zaqaryan on 08.03.2016.
  */
 @Entity
+@Table(name = "book")
 public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
-    @NotEmpty
     private String name;
 
     @Column(name = "category")
@@ -32,12 +29,10 @@ public class Book implements Serializable {
     private String fileUri;
 
     @Column(name = "author")
-    @NotEmpty
     private String author;
 
-    @Column(name = "desc")
-    @NotEmpty
-    private String desc;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "addedDate")
     private Date addedDate;
@@ -69,6 +64,14 @@ public class Book implements Serializable {
         this.name = name;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public String getImageUri() {
         return imageUri;
     }
@@ -77,12 +80,28 @@ public class Book implements Serializable {
         this.imageUri = imageUri;
     }
 
+    public String getFileUri() {
+        return fileUri;
+    }
+
+    public void setFileUri(String fileUri) {
+        this.fileUri = fileUri;
+    }
+
     public String getAuthor() {
         return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getDesc() {
+        return description;
+    }
+
+    public void setDesc(String desc) {
+        this.description = desc;
     }
 
     public Date getAddedDate() {
@@ -107,29 +126,5 @@ public class Book implements Serializable {
 
     public void setReservedCount(Integer reservedCount) {
         this.reservedCount = reservedCount;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getFileUri() {
-        return fileUri;
-    }
-
-    public void setFileUri(String fileUri) {
-        this.fileUri = fileUri;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 }

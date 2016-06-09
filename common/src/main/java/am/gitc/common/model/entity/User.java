@@ -32,12 +32,11 @@ public class User {
     private String password;
 
     @Column(name = "age")
-    @NotEmpty
     private Short age;
-    
-    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_id")
-    private Role role;
+
+    @Column(name = "role_id")
+    @Convert(converter = RoleEnum.RoleConverter.class)
+    private RoleEnum role;
 
     public Long getId() {
         return id;
@@ -87,11 +86,11 @@ public class User {
         this.age = age;
     }
 
-    public Role getRole() {
+    public RoleEnum getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RoleEnum role) {
         this.role = role;
     }
 }

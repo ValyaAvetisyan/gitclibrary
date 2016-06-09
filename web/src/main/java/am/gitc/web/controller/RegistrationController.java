@@ -1,5 +1,6 @@
 package am.gitc.web.controller;
 
+import am.gitc.common.model.entity.RoleEnum;
 import am.gitc.common.model.entity.User;
 import am.gitc.service.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class RegistrationController {
     UserServiceImpl userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String initPage(Model model) {
-        model.addAttribute("userForm", getUser());
+    public String initPage(Model model, @ModelAttribute("userForm") User user) {
+//        model.addAttribute("userForm", getUser());
         return "registration";
     }
 
@@ -38,14 +39,14 @@ public class RegistrationController {
         User dbUser = userService.authenticate(user.getEmail(), user.getPassword());
 
 //        model.addAttribute("userForm", user);
-        if (dbUser == null || dbUser.getEmail().equals("")) {
+        if (dbUser != null) {
             model.addAttribute("message", "User with this username already exists");
             return "registration";
         }
-
+        user.setRole(RoleEnum.getById(1));
         userService.addUser(user);
         model.addAttribute("message", "You have Successful registered");
-        return "login";
+        return "redirect:login";
     }
 
 
