@@ -15,10 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
-import static am.gitc.common.Constants.STORAGE_PATH;
 
 /**
  * Created by zorikz on 06/03/2016.
@@ -26,7 +25,8 @@ import static am.gitc.common.Constants.STORAGE_PATH;
 @Controller
 public class BookController {
     private static final String CMD_NAME = "bookCmd";
-    private static final String VIEW_NAME = "/addBook";
+    private static final String CONTROLLER_PATH = "/addBook";
+    private static final String VIEW_NAME = "/admin/addBook";
 
     @Autowired
     BookService bookService;
@@ -34,13 +34,13 @@ public class BookController {
     @Autowired
     ServletContext context;
 
-    @RequestMapping(value = VIEW_NAME, method = RequestMethod.GET)
+    @RequestMapping(value = CONTROLLER_PATH, method = RequestMethod.GET)
     public String addBook(@ModelAttribute(CMD_NAME) Book bookCmd, Model model, HttpSession session) {
         return VIEW_NAME;
     }
 
 
-    @RequestMapping(value = VIEW_NAME, method = RequestMethod.POST)
+    @RequestMapping(value = CONTROLLER_PATH, method = RequestMethod.POST)
     public String addBookInit(@Valid @ModelAttribute(CMD_NAME) Book bookCmd,
                               BindingResult result, Model model,
                               @RequestParam(name = "file") MultipartFile file,
@@ -68,9 +68,12 @@ public class BookController {
             model.addAttribute("errorMessage", "fileMessage");
             return VIEW_NAME;
         }
+
+        bookCmd.setAddedDate(new Date());
         bookService.save(bookCmd, file, image);
         model.addAttribute("bookCmd", bookCmd);
-        return VIEW_NAME;
+        model.addAttribute("message", "Your book successfully added");
+        return "redirect:/admin";
     }
 
     @ModelAttribute("categories")
