@@ -1,6 +1,7 @@
 package am.gitc.web.controller;
 
 import am.gitc.common.model.entity.Book;
+import am.gitc.common.model.entity.User;
 import am.gitc.service.service.BookService;
 import am.gitc.web.container.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,11 @@ public class HomeController {
     BookService bookService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String initHome(Model model, HttpSession session) {
+    public String initHome(Model model, HttpSession session, HttpServletRequest request) {
+        User user = (User) session.getAttribute("loggedUser");
+        user.getRole().getId();
 
+        pagination(request, 0, model);
         return "home";
     }
 
@@ -45,7 +49,30 @@ public class HomeController {
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "/books/page/{pageNumber}", method = RequestMethod.GET)
     public String pagedBooksPage(HttpServletRequest request, @PathVariable Integer pageNumber, Model uiModel) {
+        pagination(request, pageNumber, uiModel);
+        return "home";
+    }
 
+    private Pager currentPage(PagedListHolder<?> pagedListHolder) {
+        int currentIndex = pagedListHolder.getPage() + 1;
+        int beginIndex = Math.max(1, currentIndex - BOOK_LIST_PAGE_SIZE);
+        int endIndex = Math.min(beginIndex + 5, pagedListHolder.getPageCount());
+        int totalPageCount = pagedListHolder.getPageCount();
+        int totalItems = pagedListHolder.getNrOfElements();
+        String baseUrl = BOOK_LIST_BASEURL;
+
+        Pager pager = new Pager();
+        pager.setBeginIndex(beginIndex);
+        pager.setEndIndex(endIndex);
+        pager.setCurrentIndex(currentIndex);
+        pager.setTotalPageCount(totalPageCount);
+        pager.setTotalItems(totalItems);
+        pager.setBaseUrl(baseUrl);
+        return pager;
+    }
+
+
+    private void pagination(HttpServletRequest request, int pageNumber, Model uiModel) {
         PagedListHolder<Book> pagedListHolder = (PagedListHolder<Book>) request.getSession()
                 .getAttribute(SESSION_ATTRIBUTE_BOOK_LIST);
 
@@ -67,25 +94,5 @@ public class HomeController {
 
         uiModel.addAttribute(MODEL_ATTRIBUTE_PAGER, currentPage(pagedListHolder));
         uiModel.addAttribute(MODEL_ATTRIBUTE_BOOKS, pagedListHolder);
-
-        return "home";
-    }
-
-    private Pager currentPage(PagedListHolder<?> pagedListHolder) {
-        int currentIndex = pagedListHolder.getPage() + 1;
-        int beginIndex = Math.max(1, currentIndex - BOOK_LIST_PAGE_SIZE);
-        int endIndex = Math.min(beginIndex + 5, pagedListHolder.getPageCount());
-        int totalPageCount = pagedListHolder.getPageCount();
-        int totalItems = pagedListHolder.getNrOfElements();
-        String baseUrl = BOOK_LIST_BASEURL;
-
-        Pager pager = new Pager();
-        pager.setBeginIndex(beginIndex);
-        pager.setEndIndex(endIndex);
-        pager.setCurrentIndex(currentIndex);
-        pager.setTotalPageCount(totalPageCount);
-        pager.setTotalItems(totalItems);
-        pager.setBaseUrl(baseUrl);
-        return pager;
     }
 }

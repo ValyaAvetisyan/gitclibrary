@@ -24,4 +24,5 @@
             <beans:property name="paramName" value="locale"/>
         </beans:bean>
     </interceptors>
+
 </beans:beans>

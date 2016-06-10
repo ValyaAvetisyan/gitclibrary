@@ -26,7 +26,7 @@ import static am.gitc.common.Constants.STORAGE_PATH;
 @Controller
 public class BookController {
     private static final String CMD_NAME = "bookCmd";
-    private static final String VIEW_NAME = "/admin" + "/addBook";
+    private static final String VIEW_NAME = "/addBook";
 
     @Autowired
     BookService bookService;
@@ -36,7 +36,6 @@ public class BookController {
 
     @RequestMapping(value = VIEW_NAME, method = RequestMethod.GET)
     public String addBook(@ModelAttribute(CMD_NAME) Book bookCmd, Model model, HttpSession session) {
-        model.addAttribute("bookCmd", bookCmd);
         return VIEW_NAME;
     }
 
@@ -51,19 +50,19 @@ public class BookController {
         if (result.hasErrors()) {
             return VIEW_NAME;
         }
-
         if (file.isEmpty() || image.isEmpty()) {
             return VIEW_NAME;
         }
         if (!file.getContentType().equalsIgnoreCase("application/pdf")
-                || !image.getContentType().equalsIgnoreCase("application/msword")
-                || !image.getContentType().equalsIgnoreCase("image/vnd.djvu")
+                && !image.getContentType().equalsIgnoreCase("application/msword")
+                && !image.getContentType().equalsIgnoreCase("image/vnd.djvu")
                 ) {
             model.addAttribute("errorMessage", "imageMessage");
             return VIEW_NAME;
         }
+
         if (!image.getContentType().equalsIgnoreCase("image/jpg")
-                || !image.getContentType().equalsIgnoreCase("image/png") ||
+                && !image.getContentType().equalsIgnoreCase("image/png") &&
                 !image.getContentType().equals("image/gif")
                 ) {
             model.addAttribute("errorMessage", "fileMessage");

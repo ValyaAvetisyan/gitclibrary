@@ -6,10 +6,11 @@
     <!--<div class="container-fluid" th:if="${#strings.toLowerCase(session.loggedUser.role).equals('admin')}">-->
     <ul class="nav navbar-nav">
         <li><a class="navbar-brand" th:href="@{/books}" th:text="#{gitcLibrary}"></a></li>
-        <li><a th:href="@{/admin/books}" th:text="#{books}"></a></li>
+        <li><a th:href="@{/books}" th:text="#{books}"></a></li>
         <li><a th:href="@{/books/}" th:text="#{books}"></a></li>
         <li><a th:href="@{/pdfBooks/}" th:text="#{pdfBooks}"></a></li>
         <li><a th:href="@{/takenBooks/}" th:text="#{takenBooks}"></a></li>
+        <li><a th:href="@{/logout/}" th:text="#{logout}"></a></li>
 
     </ul>
     <div class="row pull-right" th:include="fragment/headerLangs :: langs">
@@ -21,17 +22,16 @@
     <!--<div class="container-fluid" th:if="${#strings.toLowerCase(session.loggedUser.role).equals('admin')}">-->
     <ul class="nav navbar-nav">
         <li><a class="navbar-brand" th:href="@{/books}" th:text="#{gitcLibrary}"></a></li>
-        <li><a th:href="@{/admin/books}" th:text="#{books}"></a></li>
-        <li><a th:href="@{/books/}" th:text="#{books}"></a></li>
+        <li><a th:href="@{/books}" th:text="#{books}"></a></li>
+        <!--<li><a th:href="@{/books/}" th:text="#{books}"></a></li>-->
         <li><a th:href="@{/pdfBooks/}" th:text="#{pdfBooks}"></a></li>
-        <li><a th:href="@{/takenBooks/}" th:text="#{takenBooks}"></a></li>
+        <!--<li><a th:href="@{/takenBooks/}" th:text="#{takenBooks}"></a></li>-->
         <li><a th:href="@{/addBook/}" th:text="#{addBook}"></a></li>
+        <li><a th:href="@{/logout/}" th:text="#{logout}"></a></li>
     </ul>
     <div class="row pull-right" th:include="fragment/headerLangs :: langs">
     </div>
-
 </nav>
-
 
 </body>
 </html>
