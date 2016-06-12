@@ -12,9 +12,11 @@
     <!--<div th:replace="fragment/bookPosts :: [id='grid-table-post']"></div>-->
 <!--</div>-->
 
-<!--<div class="container">-->
-    <!--<div th:replace="fragment/bookPosts :: [id='image-post']"></div>-->
-<!--</div>-->
+<!--//single post with image-->
+<div class="container">
+    <div th:replace="fragment/bookImgPost :: [id='image-post']"></div>
+</div>
+
 
 <div th:if="${pager.totalItems > 5}" class="row">
     <div th:replace="fragment/pagination :: [id='paginator']"></div>
@@ -23,5 +25,6 @@
 
 <div th:include="fragment/scripts :: [id='scripts']" th:remove="tag">Scripts</div>
 <div th:include="fragment/alerts :: [id='alerts']" th:remove="tag">Alerts</div>
+
 </body>
 </html>

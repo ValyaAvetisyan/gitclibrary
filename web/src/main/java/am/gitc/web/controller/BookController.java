@@ -3,18 +3,18 @@ package am.gitc.web.controller;
 import am.gitc.common.model.entity.Book;
 import am.gitc.service.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.File;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -62,6 +62,7 @@ public class BookController {
         }
 
         if (!image.getContentType().equalsIgnoreCase("image/jpg")
+                && !image.getContentType().equalsIgnoreCase("image/jpeg")
                 && !image.getContentType().equalsIgnoreCase("image/png") &&
                 !image.getContentType().equals("image/gif")
                 ) {
@@ -69,7 +70,8 @@ public class BookController {
             return VIEW_NAME;
         }
 
-        bookCmd.setAddedDate(new Date());
+
+
         bookService.save(bookCmd, file, image);
         model.addAttribute("bookCmd", bookCmd);
         model.addAttribute("message", "Your book successfully added");
@@ -86,5 +88,17 @@ public class BookController {
         list.add("ENGLISH");
         return list;
     }
+
+    @RequestMapping(value = "/books/download", method = RequestMethod.GET)
+    @ResponseBody
+    public FileSystemResource downloadFile(@Param(value = "name") String name) {
+        String appPath = "C:\\Users\\i7\\Documents\\GitHub\\gitclibrary";
+        String path = "\\web\\src\\main\\resources\\static\\" + name;
+
+
+
+        return new FileSystemResource(new File(appPath + path));
+    }
+
 
 }

@@ -57,15 +57,8 @@ public class LoginController {
         if (authenticatedUser.getRole().equals("ADMIN")) {
             return "redirect:/" + "admin";
         }
-        return "redirect:/" + "home";
+        return "redirect:/" + "books";
     }
-
-
-
-
-
-
-
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String showLoginForm(HttpSession session) {

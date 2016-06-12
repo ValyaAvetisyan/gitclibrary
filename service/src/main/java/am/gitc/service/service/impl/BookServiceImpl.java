@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import static am.gitc.common.Constants.STORAGE_PATH;
@@ -34,10 +35,12 @@ public class BookServiceImpl implements BookService {
     public Book save(Book book, MultipartFile file, MultipartFile image) {
         Book dbBook = null;
         try {
+            book.setAddedDate(new Date());
+            book.setName(file.getOriginalFilename());
             dbBook = bookRepository.save(book);
             String fileSavePath = STORAGE_PATH + dbBook.getId() + "\\";
-            dbBook.setFileUri(fileSavePath + file.getOriginalFilename());
-            dbBook.setImageUri(fileSavePath + image.getOriginalFilename());
+            dbBook.setFileUri("data\\" + dbBook.getId() + "\\" + file.getOriginalFilename());
+            dbBook.setImageUri("data\\" + dbBook.getId() + "\\" + image.getOriginalFilename());
             if (file.getInputStream() != null) {
                 FileUtil.createBookFolderById(fileSavePath);
                 FileUtil.saveFile(file.getInputStream(), fileSavePath, file.getOriginalFilename());

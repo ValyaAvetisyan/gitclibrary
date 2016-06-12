@@ -1,3 +1,4 @@
+common/src/main/java/am/gitc/common/Constants.java
 .idea
 target
 .idea/vcs.xml
@@ -6,3 +7,4 @@ rest/rest.iml
 web/web.iml
 service/service.iml
 web/src/main/resources/static/data/*
+

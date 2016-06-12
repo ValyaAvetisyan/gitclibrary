@@ -6,11 +6,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Zorik Zaqaryan on 14.03.2016.
  */
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<User, String> {
+
+    @Override
+    List<User> findAll();
 
     @Override
     User save(User u);
