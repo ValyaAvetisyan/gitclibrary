@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-import static am.gitc.common.Constants.STORAGE_PATH;
+import static am.gitc.common.Constants.FULL_STORAGE_PATH;
+
 
 /**
  * Created by zorikz on 06/01/2016.
@@ -38,7 +39,7 @@ public class BookServiceImpl implements BookService {
             book.setAddedDate(new Date());
             book.setName(file.getOriginalFilename());
             dbBook = bookRepository.save(book);
-            String fileSavePath = STORAGE_PATH + dbBook.getId() + "\\";
+            String fileSavePath = FULL_STORAGE_PATH + dbBook.getId() + "\\";
             dbBook.setFileUri("data\\" + dbBook.getId() + "\\" + file.getOriginalFilename());
             dbBook.setImageUri("data\\" + dbBook.getId() + "\\" + image.getOriginalFilename());
             if (file.getInputStream() != null) {

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,35 +20,33 @@ import javax.servlet.http.HttpSession;
 @RequestMapping
 public class HomeController {
 
-    private static final String SESSION_ATTRIBUTE_BOOK_LIST = "BookList";
+	private static final String SESSION_ATTRIBUTE_BOOK_LIST = "BookList";
 
-    @Autowired
-    BookService bookService;
-    @Autowired
-    BookPagination pagination;
+	@Autowired
+	BookService bookService;
+	@Autowired
+	BookPagination pagination;
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String initHome(Model model, HttpSession session, HttpServletRequest request) {
-        User user = (User) session.getAttribute("loggedUser");
-        user.getRole().getId();
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String initHome(Model model, HttpSession session, HttpServletRequest request) {
+//        User user = (User) session.getAttribute("loggedUser");
+//        user.getRole().getId();
 
-        pagination.pagination(request, 0, model);
-        return "home";
-    }
+		pagination.pagination(0, model);
+		return "home";
+	}
 
-    @RequestMapping(value = "/books")
-    public String booksRedirect(HttpServletRequest request) {
-        request.getSession().setAttribute(SESSION_ATTRIBUTE_BOOK_LIST, null);
+	@RequestMapping(value = "/books")
+	public String booksRedirect(HttpServletRequest request, Model model) {
+//        request.getSession().setAttribute(SESSION_ATTRIBUTE_BOOK_LIST, null);
+		return "redirect:/books/page/1";
+	}
 
-        return "redirect:/books/page/1";
-    }
-
-    @SuppressWarnings("unchecked")
-    @RequestMapping(value = "/books/page/{pageNumber}", method = RequestMethod.GET)
-    public String pagedBooksPage(HttpServletRequest request, @PathVariable Integer pageNumber, Model uiModel) {
-        pagination.pagination(request, pageNumber, uiModel);
-        return "home";
-    }
+	@RequestMapping(value = "/books/page/{pageNumber}", method = RequestMethod.GET)
+	public String pagedBooksPage(Model model, @PathVariable Integer pageNumber) {
+		pagination.pagination(pageNumber, model);
+		return "home";
+	}
 
 
 }

@@ -1,6 +1,5 @@
 package am.gitc.web.controller;
 
-import am.gitc.common.model.entity.User;
 import am.gitc.service.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,37 +18,33 @@ import javax.servlet.http.HttpSession;
 @RequestMapping
 public class AdminController {
 
-    private static final String SESSION_ATTRIBUTE_BOOK_LIST = "BookList";
+	private static final String SESSION_ATTRIBUTE_BOOK_LIST = "BookList";
 
-    @Autowired
-    BookService bookService;
+	@Autowired
+	BookService bookService;
 
-    @Autowired
-    BookPagination pagination;
+	@Autowired
+	BookPagination pagination;
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String initHome(Model model, HttpSession session, HttpServletRequest request) {
-        User user = (User) session.getAttribute("loggedUser");
-        user.getRole().getId();
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String initHome(HttpServletRequest request, Model model, HttpSession session) {
+//        User user = (User) session.getAttribute("loggedUser");
+//        user.getRole().getId();
 
-        pagination.pagination(request, 0, model);
-        return "admin/admin";
-    }
+		pagination.pagination(0, model);
+		return "admin/admin";
+	}
 
-    @RequestMapping(value = "admin/books")
+	@RequestMapping(value = "/admin/books", method = RequestMethod.GET)
+	public String booksRedirect() {
+		return "redirect:admin/books/page/1";
+	}
 
-    public String booksRedirect(HttpServletRequest request) {
-
-        request.getSession().setAttribute(SESSION_ATTRIBUTE_BOOK_LIST, null);
-        return "redirect:admin/books/page/1";
-    }
-
-    @SuppressWarnings("unchecked")
-    @RequestMapping(value = "admin/books/page/{pageNumber}", method = RequestMethod.GET)
-    public String pagedBooksPage(HttpServletRequest request, @PathVariable Integer pageNumber, Model uiModel) {
-        pagination.pagination(request, pageNumber, uiModel);
-        return "/admin/admin";
-    }
+	@RequestMapping(value = "/admin/books/page/{pageNumber}", method = RequestMethod.GET)
+	public String pagedBooksPage(Model model, @PathVariable Integer pageNumber) {
+		pagination.pagination(pageNumber, model);
+		return "admin/admin";
+	}
 
 
 }
