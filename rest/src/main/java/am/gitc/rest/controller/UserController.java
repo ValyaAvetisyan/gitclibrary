@@ -1,19 +1,19 @@
 package am.gitc.rest.controller;
 
 import am.gitc.common.model.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Api(tags = "User accounts management")
 @RestController
 @RequestMapping("/login")
 public class UserController {
 
-    @Autowired
 
-
+    @ApiOperation("Retrieve a list of all users")
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<User> getAllUsers() {

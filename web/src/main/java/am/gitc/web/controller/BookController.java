@@ -97,6 +97,4 @@ public class BookController {
 		String path = nestedPath + name;
 		return new FileSystemResource(new File(getPath() + path));
 	}
-
-
 }

@@ -1,6 +1,8 @@
 package am.gitc.web.controller;
 
 import am.gitc.service.service.BookService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by Zorik Zaqaryan on 28.05.2016.
  */
+@Api(tags = "Admin accounts management")
 @Controller
 @RequestMapping
 public class AdminController {
@@ -26,6 +29,7 @@ public class AdminController {
 	@Autowired
 	BookPagination pagination;
 
+	@ApiOperation("Retrieve a list of all users")
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String initHome(HttpServletRequest request, Model model, HttpSession session) {
 //        User user = (User) session.getAttribute("loggedUser");
