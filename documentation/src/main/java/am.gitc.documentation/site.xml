@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.7.0 http://maven.apache.org/xsd/decoration-1.7.0.xsd"
+         name="Gitc Library" combine.self="">
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.5</version>
+    </skin>
+
+    <body>
+        <menu ref="reports"/>
+
+        <menu name="REST API">
+            <item name="API description" href="rest-api.html"></item>
+        </menu>
+        <menu name="Building and deployment">
+            <item name="Building" href="building.html"></item>
+            <item name="Deployment" href="deployment.html"></item>
+        </menu>
+    </body>
+
+</project>

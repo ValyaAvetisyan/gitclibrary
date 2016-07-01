@@ -70,6 +70,7 @@
 		<!--<module>rest</module>-->
 		<module>service</module>
 		<module>web</module>
+		<module>documentation</module>
 	</modules>
 
 </project>
