@@ -11,7 +11,8 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @SpringBootApplication(scanBasePackages = {
         "am.gitc.common",
         "am.gitc.web",
-        "am.gitc.service"
+        "am.gitc.service",
+        "am.gitc.rest"
 })
 @ImportResource("classpath*:/config/i18.xml")
 public class GitcLibraryWeb extends SpringBootServletInitializer {
